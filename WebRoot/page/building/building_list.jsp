@@ -1,7 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ include file="/base/base.jsp"%>
-<%@ include file="/base/database.jsp" %>
-
+<%@ page import = "com.gxuwz.laters.bean.manager.*" %>
+<%@ page import = "com.gxuwz.laters.bean.entity.*" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -24,26 +24,27 @@
 <form method="post" action="" id="listform">
   <div class="panel admin-panel">
     <div class="panel-head"><strong class="icon-reorder"> 用户列表</strong> </div>
+    <form method="post" action="<%=path%>/BuildServlet?action=seach" >
     <div class="padding border-bottom">
       <ul class="search" style="padding-left:10px;">
-        <li> <a class="button border-main icon-plus-square-o" href="page/user/user_add.jsp"> 添加用户</a> </li>
+
+        <li> <a class="button border-main icon-plus-square-o" href="page/building/building_add.jsp"> 添加用户</a> </li>
+            
         <li>搜索：</li>
-        <li>
+          
+          <li> <input type="text" placeholder="请输入搜索关键字" name="keywords" class="input" style="width:250px; line-height:17px;display:inline-block" />       
+         <input type="submit" value="搜索"name="搜索" class="button border-main icon-search"  ></li>
+<%--        <li>
           <input type="text" placeholder="请输入搜索关键字" name="keywords" class="input" style="width:250px; line-height:17px;display:inline-block" />
-          <a href="javascript:void(0)" class="button border-main icon-search" onclick="changesearch()" > 搜索</a></li>
+          <a href="<%=path%>/BuildServlet?action=seach" class="button border-main icon-search" onclick="changesearch()" > 搜索</a></li> --%>
       </ul>
     </div>
+    </form> 
     <table class="table table-hover text-center">
       <tr>
        <th>序号</th>
-				<th>用户名</th>
-				<th>姓名</th>
-				<th>性别</th>
-				<th>用户类型</th>
-				<th>出生年月</th>
-				<th>兴趣</th>
-				<th>电子邮箱</th>
-				<th>自我介绍</th>
+				<th>楼号</th>
+				<th>楼名</th>
 				<th>操作</th>
       </tr>
     
@@ -51,22 +52,22 @@
 				
 			<%--读取所有用户信息记录 --%>
 			<%  //设置编码方式
+		       List<Building> buildList = new ArrayList<Building>();
+			   buildList = (List)request.getAttribute("buildList");
+			   int index = 1;
+			   for(Building build : buildList){
+			   	  String buildID = build.getBuildID();
+			   	  String buildName = build.getBuildName();
 			   
 			%>
 
 			<tr>
 				<td><%=index++%></td>
-				<td><%=userid%></td>
-				<td><%=fullname%></td>
-				
-				<td><%=sex%></td>
-				<td><%=utype%></td>
-				<td><%=birthday%></td>
-				<td><%=xq%></td>
-				<td><%=email%></td>
-				<td><%=remark%></td>
+				<td><%=buildID%></td>
+				<td><%=buildName%></td>
+
 				<td>
-				<div class="button-group"> <a class="button border-main" href="<%=path%>/page/user/user_edit.jsp?userid=<%=userid%>"><span class="icon-edit"></span> 修改</a> <a class="button border-red" href="<%=path%>/page/user/action_delUser.jsp?userid=<%=userid%>" ><span class="icon-trash-o"></span> 删除</a> </div>
+				<div class="button-group"> <a class="button border-main" href="<%=path%>/BuildServlet?buildID=<%=buildID%>&action=get"><span class="icon-edit"></span> 修改</a> <a class="button border-red" href="<%=path%>/BuildServlet?buildID=<%=buildID%>&action=del" ><span class="icon-trash-o"></span> 删除</a> </div>
 				</td>
 			</tr>
 			<%

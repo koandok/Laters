@@ -20,14 +20,12 @@ public class UserManager {
 		       }catch(Exception e){
 		       e.printStackTrace();
 		       throw e;
-		       }finally{
-		   		dbUtil.closeall();
-		   	}
+		       }
 	}
 	
 	public User findAllbyID(String ID)throws Exception{
 		try {
-			String sql = "select * from  WHERE userid='"+ID+"'";
+			String sql = "select * sys_user from  WHERE userid='"+ID+"'";
 			
 		    ResultSet rs = dbUtil.executeQuery(sql, null);
 		    User user =new User();
@@ -41,8 +39,6 @@ public class UserManager {
 		       }catch(Exception e){
 		       e.printStackTrace();
 		       throw e;
-		       }finally{
-		   		dbUtil.closeall();
-		   	}
+		       }
 	}
 }

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.gxuwz.laters.bean.entity.Building;
+import com.gxuwz.laters.bean.manager.BuildManager;
 
 
 
@@ -30,6 +31,7 @@ private void proccess(HttpServletRequest request,HttpServletResponse response,St
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//定义区分不同处理动作类型参数: list:表示显示列表，add表示添加，input表示录入，edit表示修改，get表示读取单个用户信息
 				String action=request.getParameter("action");
+				System.out.println("11111111111"+action);
 				//选择结构
 				if("list".equals(action)){
 					try {
@@ -45,8 +47,13 @@ private void proccess(HttpServletRequest request,HttpServletResponse response,St
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-				}else if("input".equals(action)){
-					
+				}else if("seach".equals(action)){
+					try {
+						seach(request, response);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}else if("edit".equals(action)){
 					try {
 						edit(request,response);
@@ -126,12 +133,10 @@ private void proccess(HttpServletRequest request,HttpServletResponse response,St
 		public void get(HttpServletRequest request, HttpServletResponse response) throws Exception {
 			String buildID = request.getParameter("buildID");;
 			//实例化user
-			Building build = new Building();
-			//把参数对应放入实体类user属性中
-			build.setBuildID(buildID);
 			
+			Building build = new Building();		
 			BuildManager buildmanager = new BuildManager();
-			build = buildmanager.findAllbyID(build);
+			build = buildmanager.findAllbyID(buildID);
 			request.setAttribute("build", build);
 			proccess(request, response, "/page/building/building_update.jsp");
 			
@@ -151,22 +156,33 @@ private void proccess(HttpServletRequest request,HttpServletResponse response,St
 			
 			BuildManager buildmanager = new BuildManager();
 			
-			if(buildmanager.edit(build)>0){
+			if(buildmanager.add(build)>0){
 			//response.sendRedirect("/leaveMVC/WebRoot/page/user/user_updata.jsp");
-			proccess(request, response, "/login.jsp");
+			list(request, response);
 			}else{
 			//response.sendRedirect("/leaveMVC/WebRoot/page/user/user_updata.jsp");	
-				proccess(request, response, "/page/build/build_updata.jsp");
+				proccess(request, response, "/page/build/build_add.jsp");
 			}
 			}catch(Exception e){
 				e.printStackTrace();
 			}
 			}
 		public void list(HttpServletRequest request, HttpServletResponse response) throws Exception {
-			String sql = "select *from building where 1=1";
+			
 			List<Building> buildList = new ArrayList<Building>();			
 			BuildManager buildmanager = new BuildManager();
-			buildList = buildmanager.findAll;
+			buildList = buildmanager.findAll();
+			request.setAttribute("buildList", buildList);
+			proccess(request, response, "/page/building/building_list.jsp");
+			
+	}
+		
+		public void seach(HttpServletRequest request, HttpServletResponse response) throws Exception {
+			String keywords= request.getParameter("keywords");
+			System.out.println("+++++++++++"+keywords);
+			List<Building> buildList = new ArrayList<Building>();			
+			BuildManager buildmanager = new BuildManager();
+			buildList = buildmanager.Seach(keywords);
 			request.setAttribute("buildList", buildList);
 			proccess(request, response, "/page/building/building_list.jsp");
 			

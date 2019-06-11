@@ -3,16 +3,13 @@ package com.gxuwz.laters.database;
 import java.sql.*;
 
 public class DbUtil {
-	protected Connection conn = null;
-	protected ResultSet rs = null;	
-	protected PreparedStatement pstmt = null;
 	private String jdbc_url;
 	private String jdbc_id;
 	private String jdbc_pwd;
 	private String jdbc_driver;
 	public DbUtil(){
 		this.jdbc_driver="com.mysql.jdbc.Driver";
-		this.jdbc_url="jdbc:mysql://127.0.0.1:3306/leavedb";
+		this.jdbc_url="jdbc:mysql://127.0.0.1:3306/laters";
 		this.jdbc_id="root";
 		this.jdbc_pwd="123456";
 	}
@@ -28,9 +25,8 @@ public class DbUtil {
 	}
 	
 	  public int executeUpate(String sql,Object params[]) throws Exception{
-			/*Connection conn = null;
-		
-			PreparedStatement pstmt = null;*/
+			Connection conn = null;
+			PreparedStatement pstmt = null;
 		    try{
 		    conn = getConn();
 			pstmt = conn.prepareStatement(sql);
@@ -68,9 +64,9 @@ public class DbUtil {
 	  
 	  public ResultSet executeQuery(String sql,Object[]params) throws Exception{
 		    
-		    /*Connection conn = null;
+		    Connection conn = null;
 	    	ResultSet rs = null;	
-			PreparedStatement pstmt = null;*/
+			PreparedStatement pstmt = null;
 		    try{
 		    conn = getConn();
 			pstmt = conn.prepareStatement(sql);
@@ -104,13 +100,13 @@ public class DbUtil {
 	  }
 	  
 	  
-	  public void closeall()throws SQLException{
+	  public void close(ResultSet rs,Statement stmt,Connection conn)throws SQLException{
 		    try{
 		      if(rs!=null){
-		     rs.close();
+		     stmt.close();
 		  }
-		    if(pstmt!=null){
-		     pstmt.close();
+		    if(stmt!=null){
+		     stmt.close();
 		  }
 		   if(conn!=null){
 		     conn.close();
@@ -120,33 +116,17 @@ public class DbUtil {
 		    }
 		  }
 		  
-		   public void closeSC()throws SQLException{
-		       try{
-				 
-						    if(pstmt!=null){
-						     pstmt.close();
-						  }
-						   if(conn!=null){
-						     conn.close();
-						  }
-						    }catch(SQLException e){
-						      throw e;
-						    }
+		   public void close(Statement stmt,Connection conn)throws SQLException{
+		       close(null, stmt, conn);
 		   }
 		   
-		  public void closeR(ResultSet rs)throws SQLException{
-			  if(rs!=null){
-				     rs.close();
-				  }
+		  public void close(ResultSet rs)throws SQLException{
+		       close(rs, null, null);
 		   }
-		    public void closeS()throws SQLException{
-		    	 if(pstmt!=null){
-				     pstmt.close();
-				  }
+		    public void close(Statement stmt)throws SQLException{
+		       close(null, stmt, null);
 		   }
-		   public void closeC(Connection conn)throws SQLException{
-			   if(conn!=null){
-				     conn.close();
-				  }
+		   public void close(Connection conn)throws SQLException{
+		       close(null, null, conn);
 		   }
 }
