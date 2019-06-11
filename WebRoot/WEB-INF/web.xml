@@ -9,4 +9,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>BuildServlet</display-name>
+    <servlet-name>BuildServlet</servlet-name>
+    <servlet-class>com.gxuwz.laters.web.servlet.BuildServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BuildServlet</servlet-name>
+    <url-pattern>/BuildServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

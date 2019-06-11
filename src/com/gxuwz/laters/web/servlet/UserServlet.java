@@ -45,7 +45,12 @@ public class UserServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}else if("get".equals(action)){
-			
+			try {
+				get(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 	}
@@ -79,5 +84,26 @@ public class UserServlet extends HttpServlet {
 			throw e;
 		}
 	}
+	
+	
+	public void get(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		try{
+		//1获得参数
+		String userid = request.getParameter("userid");;
+		//实例化user
+		User user = new User();
+		//把参数对应放入实体类user属性中
+		user.setUserid(userid);
+		
+		UserManager usermanager = new UserManager();
+		user = usermanager.findAllbyID(userid);
+		request.setAttribute("user", user);
+		proccess(request, response, "/page/user/user_update.jsp");
+		}catch(Exception e){
+			e.printStackTrace();
+			throw e;
+		}
+	}
+	
 	
 }

@@ -19,12 +19,7 @@
 <body>
 <%  			//设置编码方式
 
-			    request.setCharacterEncoding("utf-8");
-			    //接收参数
-			    String name=(String)session.getAttribute("name");
-				UserManager m = new UserManager();
-				User user = new User();
-				user = m.findAllbyID(name);
+User user = (User)request.getAttribute("user");
 					%>
 <div class="panel admin-panel">
   <div class="panel-head" id="add"><strong><span class="icon-pencil-square-o"></span>个人设置</strong></div>
