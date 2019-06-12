@@ -4,12 +4,31 @@ public class Student {
 	private String stuID;
 	private String classID;
 	private String stuName;
-	private String sex;
-	private String address;
-	private String stuTel;
-	private String contact;
-	private String contactTel;
+	private String bedID;
 	private String password;
+	private String dormID;
+	private String garde;
+	public Student(){
+		
+	}
+	public String getBedID() {
+		return bedID;
+	}
+	public void setBedID(String bedID) {
+		this.bedID = bedID;
+	}
+	public String getDormID() {
+		return dormID;
+	}
+	public void setDormID(String dormID) {
+		this.dormID = dormID;
+	}
+	public String getGarde() {
+		return garde;
+	}
+	public void setGarde(String garde) {
+		this.garde = garde;
+	}
 	public String getStuID() {
 		return stuID;
 	}
@@ -27,36 +46,6 @@ public class Student {
 	}
 	public void setStuName(String stuName) {
 		this.stuName = stuName;
-	}
-	public String getSex() {
-		return sex;
-	}
-	public void setSex(String sex) {
-		this.sex = sex;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	public String getStuTel() {
-		return stuTel;
-	}
-	public void setStuTel(String stuTel) {
-		this.stuTel = stuTel;
-	}
-	public String getContact() {
-		return contact;
-	}
-	public void setContact(String contact) {
-		this.contact = contact;
-	}
-	public String getContactTel() {
-		return contactTel;
-	}
-	public void setContactTel(String contactTel) {
-		this.contactTel = contactTel;
 	}
 	public String getPassword() {
 		return password;

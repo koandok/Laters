@@ -17,10 +17,11 @@
 <script src="js/pintuer.js"></script>
 </head>
 <body>
-<%  			//设置编码方式
+<%
+	//设置编码方式
 
-User user = (User)request.getAttribute("user");
-					%>
+Ruser user = (Ruser)request.getAttribute("user");
+%>
 <div class="panel admin-panel">
   <div class="panel-head" id="add"><strong><span class="icon-pencil-square-o"></span>个人设置</strong></div>
   <div class="body-content" >

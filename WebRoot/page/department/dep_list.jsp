@@ -21,14 +21,14 @@
 </head>
 
 <body>
-<form method="post" action="<%=path%>/BuildServlet?action=seach" id="listform">
+<form method="post" action="<%=path%>/DepServlet?action=seach" id="listform">
   <div class="panel admin-panel">
     <div class="panel-head"><strong class="icon-reorder"> 用户列表</strong> </div>
    <%--  <form method="post" action="<%=path%>/BuildServlet?action=seach" > --%>
     <div class="padding border-bottom">
       <ul class="search" style="padding-left:10px;">
 
-        <li> <a class="button border-main icon-plus-square-o" href="page/building/building_add.jsp"> 添加用户</a> </li>
+        <li> <a class="button border-main icon-plus-square-o" href="page/department/dep_add.jsp"> 添加用户</a> </li>
             
         <li>搜索：</li>
           
@@ -52,22 +52,22 @@
 				
 			<%--读取所有用户信息记录 --%>
 			<%  //设置编码方式
-		       List<Building> buildList = new ArrayList<Building>();
-			   buildList = (List)request.getAttribute("buildList");
+		       List<Department> depList = new ArrayList<Department>();
+			   depList = (List)request.getAttribute("depList");
 			   int index = 1;
-			   for(Building build : buildList){
-			   	  String buildID = build.getBuildID();
-			   	  String buildName = build.getBuildName();
+			   for(Department dep : depList){
+			   	  String depID = dep.getDepID();
+			   	  String depName = dep.getDepName();
 			   
 			%>
 
 			<tr>
 				<td><%=index++%></td>
-				<td><%=buildID%></td>
-				<td><%=buildName%></td>
+				<td><%=depID%></td>
+				<td><%=depName%></td>
 
 				<td>
-				<div class="button-group"> <a class="button border-main" href="<%=path%>/BuildServlet?buildID=<%=buildID%>&action=get"><span class="icon-edit"></span> 修改</a> <a class="button border-red" href="<%=path%>/BuildServlet?buildID=<%=buildID%>&action=del" ><span class="icon-trash-o"></span> 删除</a> </div>
+				<div class="button-group"> <a class="button border-main" href="<%=path%>/DepServlet?depID=<%=depID%>&action=get"><span class="icon-edit"></span> 修改</a> <a class="button border-red" href="<%=path%>/DepServlet?depID=<%=depID%>&action=del" ><span class="icon-trash-o"></span> 删除</a> </div>
 				</td>
 			</tr>
 			<%

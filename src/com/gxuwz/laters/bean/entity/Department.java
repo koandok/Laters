@@ -4,6 +4,9 @@ public class Department {
 
 	private String depID;
 	private String depName;
+	public Department(){
+		
+	}
 	public String getDepID() {
 		return depID;
 	}

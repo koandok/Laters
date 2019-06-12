@@ -1,85 +1,83 @@
 package com.gxuwz.laters.web.servlet;
+
 import java.io.IOException;
-import java.util.*;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.gxuwz.laters.bean.entity.Building;
-import com.gxuwz.laters.bean.manager.BuildManager;
 
+import com.gxuwz.laters.bean.entity.*;
+import com.gxuwz.laters.bean.manager.*;
 
-
-
-/**
- * Servlet implementation class BuildServlet
- */
-public class BuildServlet extends HttpServlet {
-
+public class DormServlet extends HttpServlet {
 private void proccess(HttpServletRequest request,HttpServletResponse response,String path)throws ServletException,IOException{
 		
 		RequestDispatcher rd=request.getRequestDispatcher(path);
 		rd.forward(request, response);
-		
-	}
-    
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
+		.
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	doPost(request, response);
+	}
+
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//定义区分不同处理动作类型参数: list:表示显示列表，add表示添加，input表示录入，edit表示修改，get表示读取单个用户信息
-				String action=request.getParameter("action");
-				System.out.println("11111111111"+action);
-				//选择结构
-				if("list".equals(action)){
-					try {
-						list(request, response);
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}else if("add".equals(action)){
-					try {
-						add(request, response);
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}else if("seach".equals(action)){
-					try {
-						seach(request, response);
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}else if("edit".equals(action)){
-					try {
-						edit(request,response);
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}else if("get".equals(action)){
-					try {
-						get(request, response);
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}else if("del".equals(action)){
-					try {
-						del(request, response);
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
+		String action=request.getParameter("action");
+		System.out.println("11111111111"+action);
+		//选择结构
+		if("list".equals(action)){
+			try {
+				list(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else if("add".equals(action)){
+			try {
+				add(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else if("seach".equals(action)){
+			try {
+				seach(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else if("edit".equals(action)){
+			try {
+				edit(request,response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else if("get".equals(action)){
+			try {
+				get(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else if("del".equals(action)){
+			try {
+				del(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 
-	
 	}
-
+	
 	public void edit(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		try{
 	
@@ -187,4 +185,5 @@ private void proccess(HttpServletRequest request,HttpServletResponse response,St
 			
 			
 	}
+
 }

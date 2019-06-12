@@ -5,8 +5,11 @@ public class Instructor {
 	private String instID;
 	private String instName;
 	private String depID;
-	private String telephone;
+	private String classID;
 	private String password;
+	public Instructor(){
+		
+	}
 	public String getInstID() {
 		return instID;
 	}
@@ -25,11 +28,12 @@ public class Instructor {
 	public void setDepID(String depID) {
 		this.depID = depID;
 	}
-	public String getTelephone() {
-		return telephone;
+	
+	public String getClassID() {
+		return classID;
 	}
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
+	public void setClassID(String classID) {
+		this.classID = classID;
 	}
 	public String getPassword() {
 		return password;

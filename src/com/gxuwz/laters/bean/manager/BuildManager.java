@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.*;
 
 import com.gxuwz.laters.bean.entity.Building;
-import com.gxuwz.laters.bean.entity.User;
+import com.gxuwz.laters.bean.entity.Ruser;
 import com.gxuwz.laters.database.DbUtil;
 
 public class BuildManager {

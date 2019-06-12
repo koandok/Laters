@@ -29,7 +29,7 @@
   
   <h2><span class="icon-user"></span>填写请假申请</h2>
   <ul>
-    <li><a href="<%=path %>/BuildServlet?action=list" target="right"><span class="icon-caret-right"></span>填写请假申请</a></li>
+    <li><a href="<%=path %>/DepServlet?action=list" target="right"><span class="icon-caret-right"></span>填写请假申请</a></li>
      </ul>  
     
     

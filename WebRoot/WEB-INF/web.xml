@@ -15,8 +15,26 @@
     <servlet-name>BuildServlet</servlet-name>
     <servlet-class>com.gxuwz.laters.web.servlet.BuildServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>DepServlet</servlet-name>
+    <servlet-class>com.gxuwz.laters.web.servlet.DepServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DormServlet</servlet-name>
+    <servlet-class>com.gxuwz.laters.web.servlet.DormServlet</servlet-class>
+  </servlet>
+
+
   <servlet-mapping>
     <servlet-name>BuildServlet</servlet-name>
     <url-pattern>/BuildServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DepServlet</servlet-name>
+    <url-pattern>/DepServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DormServlet</servlet-name>
+    <url-pattern>/DormServlet</url-pattern>
   </servlet-mapping>
 </web-app>

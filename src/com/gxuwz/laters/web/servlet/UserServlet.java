@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.gxuwz.laters.bean.entity.User;
+import com.gxuwz.laters.bean.entity.*;
 import com.gxuwz.laters.bean.manager.UserManager;
 
 public class UserServlet extends HttpServlet {
@@ -66,7 +66,7 @@ public class UserServlet extends HttpServlet {
 		User user = new User();
 		//把参数对应放入实体类user属性中
 		user.setFullname(fullname);
-		user.setPwd(pwd);
+		user.setPassword(pwd);;
 		user.setTelephone(telephone);
 		user.setUserid(userid);
 		
