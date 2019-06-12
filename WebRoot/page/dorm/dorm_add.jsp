@@ -23,23 +23,53 @@
 <div class="panel admin-panel">
   <div class="panel-head" id="add"><strong><span class="icon-pencil-square-o"></span>增加用户</strong></div>
   <div class="body-content">
-    <form method="post" class="form-x" action="<%=path%>/DepServlet?action=add">  
+    <form method="post" class="form-x" action="<%=path%>/DormServlet?action=add">  
       <div class="form-group">
         <div class="label">
-          <label>楼号：</label>
+          <label>宿舍号：</label>
         </div>
         <div class="field" align="center">
-          <input  type="text" class="input w50" value="" name="depID"  />
+          <input  type="text" class="input w50" value="" name="dormID"  />
+          <div class="tips"></div>
+        </div>
+      </div>
+      
+       <div class="form-group">
+        <div class="label">
+          <label>学生号：</label>
+        </div>
+        <div class="field" align="center">
+          <input  type="text" class="input w50" value="" name="stuID"  />
+          <div class="tips"></div>
+        </div>
+      </div>
+      
+       <div class="form-group">
+        <div class="label">
+          <label>床号：</label>
+        </div>
+        <div class="field" align="center">
+		  <select name = "bedID">
+		  <option value =" "> </option>
+		  <option value ="1">1</option>
+		  <option value="2">2</option>
+		  <option value="3">3</option>
+		  <option value="4">4</option>s
+		  <option value="5">5</option>
+		  <option value="6">6</option>
+		  <option value="7">7</option>
+		  <option value="8">8</option>
+		</select>
           <div class="tips"></div>
         </div>
       </div>
 
       <div class="form-group">
         <div class="label">
-          <label>楼名：</label>
+          <label>楼号：</label>
         </div>
         <div class="field" align="center">
-          <input type="text" class="input w50" value="" name="depName" data-validate="required:请输入班号" />
+          <input type="text" class="input w50" value="" name="depID" data-validate="required:请输入" />
           <div class="tips"></div>
         </div>
       </div>
@@ -49,7 +79,7 @@
           <label></label>
         </div>
         <div class="field" >
-          <button class="button bg-main icon-check-square-o" type="submit"> 修改</button>
+          <button class="button bg-main icon-check-square-o" type="submit"> 添加</button>
         </div>
       </div>
     </form>

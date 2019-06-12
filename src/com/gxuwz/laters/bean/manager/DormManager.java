@@ -11,71 +11,95 @@ import com.gxuwz.laters.database.DbUtil;
 public class DormManager {
 private DbUtil dbUtil =new DbUtil();
 	
-	public List<Dorm> findAll() throws Exception{
+	public List<Dorm> findAll(String buildID) throws Exception{
 		List<Dorm> dormList = new ArrayList<Dorm>();
-		String sql = "select * from sys_department where 1=1";
+		String sql = "select * from sys_dorm where buildID='"+buildID+"'";
 		ResultSet rs = dbUtil.executeQuery(sql, null);
 		while(rs.next()){
-			Department dep = new Department();
-			dep.setDepID(rs.getString("depID"));
-			dep.setDepName(rs.getString("depName"));
-			depList.add(dep);
+			Dorm dorm = new Dorm();
+		dorm.setBedID(rs.getString("bedID"));
+		dorm.setBuildID(rs.getString("buildID"));
+		dorm.setDormID(rs.getString("dormID"));
+		dorm.setStuID("stuID");
+		dormList.add(dorm);
 		}
-		return depList;
+		return dormList;
 	}
 	
-	public List<Department> Seach(String keywords) throws Exception{
-		List<Department> depList = new ArrayList<Department>();
-		String sql = "select * from sys_department where 1=1";
+	public List<Dorm> Seach(String keywords,String buildID) throws Exception{
+		List<Dorm> dormList = new ArrayList<Dorm>();
+		String sql = "select * from sys_dorm where buildID='"+buildID+"'";
 			  if(keywords!=null){
-			   sql="select * from sys_department where depID like '%"+keywords+"%'  ";
+			   sql="select * from sys_dorm where dormID like '%"+keywords+"%' and buildID='"+buildID+"' ";
 		      }
 		ResultSet rs = dbUtil.executeQuery(sql, null);
 		while(rs.next()){
-			Department dep = new Department();
-			dep.setDepID(rs.getString("depID"));
-			dep.setDepName(rs.getString("depName"));
-			depList.add(dep);
+			Dorm dorm = new Dorm();
+			dorm.setBedID(rs.getString("bedID"));
+			dorm.setBuildID(rs.getString("buildID"));
+			dorm.setDormID(rs.getString("dormID"));
+			dorm.setStuID("stuID");
+			dormList.add(dorm);
 		}
-		return depList;
+		return dormList;
 	}
 	
-	public Department findAllbyID(String ID)throws Exception{
+	public Dorm findAllbyID(String ID,String name)throws Exception{
 		try {
-			String sql = "select *  from sys_department WHERE depID='"+ID+"'";
+			String sql = "select *  from sys_dorm WHERE dormID='"+ID+"' and stuID = '"+name+"'";
 			
 		    ResultSet rs = dbUtil.executeQuery(sql, null);
-		    Department dep = new Department();
+		    Dorm dorm = new Dorm();
 		    while(rs.next()){
-		    	dep.setDepID(rs.getString("depID"));
-				dep.setDepName(rs.getString("depName"));
+		    	dorm.setBedID(rs.getString("bedID"));
+				dorm.setBuildID(rs.getString("buildID"));
+				dorm.setDormID(rs.getString("dormID"));
+				dorm.setStuID("stuID");
 		    }
-		    return dep;
+		    return dorm;
 		       }catch(SQLException e){
 		       e.printStackTrace();
 		       throw e;
 		       }
 	}
 	
-	public int edit(Department dep)throws Exception{
+	public boolean findBedID(String bedID,String dormID)throws Exception{
 		try {
-			String sql = "update sys_department set depName=? WHERE depID=?";
-			Object params[] = new Object [2];
-			params[0] = dep.getDepName();
-			params[1] = dep.getDepID();
-		    int count = dbUtil.executeUpate(sql, params);
-		    return count;
-		       }catch(Exception e){
+			boolean b=true;
+			String sql = "select *  from sys_dorm WHERE bedID = '"+bedID+"' and dormID='"+dormID+"'";
+		    ResultSet rs = dbUtil.executeQuery(sql, null);
+		    Dorm dorm = new Dorm();
+		    if(rs.next()){
+		    	b = false;
+		    }
+		    return b;
+		       }catch(SQLException e){
 		       e.printStackTrace();
 		       throw e;
 		       }
 	}
 	
-	public int del(Department dep)throws Exception{
+	public int edit(Dorm dorm)throws Exception{
 		try {
-			String sql = "delete from sys_department where depID=?";
-			Object params[] = new Object [1];
-			params[0] = dep.getDepID();
+			String sql = "update sys_dorm set bedID=? WHERE dormID=? and stuID=?";
+			Object params[] = new Object [3];
+			params[0] = dorm.getBedID();
+			params[1] = dorm.getDormID();
+			params[2] = dorm.getStuID();
+		    int count = dbUtil.executeUpate(sql, params);
+		    return count;
+		       }catch(Exception e){
+		       e.printStackTrace();
+		       return 0;
+		       }
+	}
+	
+	public int del(Dorm dorm)throws Exception{
+		try {
+			String sql = "delete from sys_dorm where  dormID=? and stuID=?";
+			Object params[] = new Object [2];
+			params[0] = dorm.getDormID();
+			params[1] = dorm.getStuID();
 
 		    int count = dbUtil.executeUpate(sql, params);
 		    return count;

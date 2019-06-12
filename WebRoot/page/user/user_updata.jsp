@@ -20,7 +20,7 @@
 <%
 	//设置编码方式
 
-Ruser user = (Ruser)request.getAttribute("user");
+User user = (User)request.getAttribute("user");
 %>
 <div class="panel admin-panel">
   <div class="panel-head" id="add"><strong><span class="icon-pencil-square-o"></span>个人设置</strong></div>
@@ -52,7 +52,7 @@ Ruser user = (Ruser)request.getAttribute("user");
           <label>密码：</label>
         </div>
         <div class="field" align="center">
-          <input type="text" class="input w50" value="<%=user.getPwd()%>" name="pwd" data-validate="required:请输入密码" maxlength="50"/>
+          <input type="text" class="input w50" value="<%=user.getPassword()%>" name="pwd" data-validate="required:请输入密码" maxlength="50"/>
           <div class="tips"></div>
         </div>
       </div>

@@ -19,7 +19,7 @@ private void proccess(HttpServletRequest request,HttpServletResponse response,St
 		
 		RequestDispatcher rd=request.getRequestDispatcher(path);
 		rd.forward(request, response);
-		.
+		
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
