@@ -3,31 +3,37 @@ package com.gxuwz.laters.bean.entity;
 public class Ruser {
 	
 	
-	private String userID;
+	private String ruserID;
 	private String password;
-	private String userName;
+	private String ruserName;
 	private String buildID;
 	public Ruser(){
 		
 	}
-	public String getUserID() {
-		return userID;
+
+	public String getRuserID() {
+		return ruserID;
 	}
-	public void setUserID(String userID) {
-		this.userID = userID;
+
+	public void setRuserID(String ruserID) {
+		this.ruserID = ruserID;
 	}
+
 	public String getPassword() {
 		return password;
 	}
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getUserName() {
-		return userName;
+
+	public String getRuserName() {
+		return ruserName;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+
+	public void setRuserName(String ruserName) {
+		this.ruserName = ruserName;
 	}
+
 	public String getBuildID() {
 		return buildID;
 	}

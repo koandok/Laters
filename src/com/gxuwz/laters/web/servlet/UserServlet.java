@@ -89,7 +89,7 @@ public class UserServlet extends HttpServlet {
 	public void get(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		try{
 		//1获得参数
-		String userid = request.getParameter("userid");;
+		String userid = request.getParameter("userid");
 		//实例化user
 		User user = new User();
 		//把参数对应放入实体类user属性中

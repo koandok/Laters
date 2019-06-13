@@ -23,6 +23,16 @@
     <servlet-name>DormServlet</servlet-name>
     <servlet-class>com.gxuwz.laters.web.servlet.DormServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.gxuwz.laters.web.servlet.LoginServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>LaterServlet</servlet-name>
+    <servlet-class>com.gxuwz.laters.web.servlet.LaterServlet</servlet-class>
+  </servlet>
+
+
 
 
   <servlet-mapping>
@@ -36,5 +46,13 @@
   <servlet-mapping>
     <servlet-name>DormServlet</servlet-name>
     <url-pattern>/DormServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/LoginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LaterServlet</servlet-name>
+    <url-pattern>/LaterServlet</url-pattern>
   </servlet-mapping>
 </web-app>

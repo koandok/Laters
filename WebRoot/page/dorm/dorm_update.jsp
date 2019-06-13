@@ -23,32 +23,72 @@
 
 <body>
 <%
-Department dep = (Department)request.getAttribute("dep");
+Dorm dorm = (Dorm)request.getAttribute("dorm");
 
  %>
 <div class="panel admin-panel">
   <div class="panel-head" id="add"><strong><span class="icon-pencil-square-o"></span>增加用户</strong></div>
   <div class="body-content">
-    <form method="post" class="form-x" action="<%=path%>/DepServlet?action=edit">  
-      <div class="form-group">
+    <form method="post" class="form-x" action="<%=path %>/DormServlet?action=edit">  
+   <div class="form-group">
         <div class="label">
-          <label>课程编号：</label>
+          <label>宿舍号：</label>
         </div>
         <div class="field" align="center">
-          <input  type="text" class="input w50" value="<%=dep.getDepID()%>" name="depID" readonly="ture" />
+          <input  type="text" class="input w50" value="<%=dorm.getDormID() %>" name="dormID"  readonly="ture"/>
           <div class="tips"></div>
         </div>
       </div>
+      
+       <div class="form-group">
+        <div class="label">
+          <label>学生号：</label>
+        </div>
+        <div class="field" align="center">
+          <input  type="text" class="input w50" value="<%=dorm.getStuID() %>" name="stuID" readonly="ture" />
+          <div class="tips"></div>
+        </div>
+      </div>
+ 
+       <div class="form-group">
+        <div class="label">
+          <label>楼号：</label>
+        </div>
+        <div class="field" align="center">
+          <input type="text" class="input w50" value="<%=dorm.getBuildID() %>" name="buildID" data-validate="required:请输入" readonly="ture"/>
+          <div class="tips"></div>
+        </div>
+      </div>
+ 
+       <div class="form-group">
+        <div class="label">
+          <label>床号：</label>
+        </div>
+        <div class="field" align="center">
+		  <select name = "bedID"class="select w50"style="height:50px">
+		    <option value = "<%=dorm.getBedID()%>"><%=dorm.getBedID()%></option>
+	        <option value = "1"><%=1%></option>
+	        <option value = "2"><%=2%></option>
+	        <option value = "3"><%=3%></option>
+	        <option value = "4"><%=4%></option>
+	        <option value = "5"><%=5%></option>
+	        <option value = "6"><%=6%></option>
+	        <option value = "7"><%=7%></option>
+	        <option value = "8"><%=8%></option>
+		  </select>
+          <div class="tips"></div>
+        </div>
+      </div>
+ <%
+				Object obj = request.getAttribute("flag");
+				
+				if (obj!= null){	
+				 %>
+				 <div style="txxt-align:center">
+				 <span>error:键位冲突</span>
+				 </div>
+				 <%}%> 
 
-      <div class="form-group">
-        <div class="label">
-          <label>班号：</label>
-        </div>
-        <div class="field" align="center">
-          <input type="text" class="input w50" value="<%=dep.getDepName()%>" name="depName" data-validate="required:请输入班号" />
-          <div class="tips"></div>
-        </div>
-      </div>
 
        <div class="form-group">
         <div class="label">

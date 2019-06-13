@@ -5,6 +5,7 @@ private String dormID;
 private String buildID;
 private String stuID;
 private String bedID;
+
 public Dorm(){
 	
 }
