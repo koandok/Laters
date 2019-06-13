@@ -3,6 +3,7 @@ package com.gxuwz.laters.web.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.gxuwz.laters.bean.entity.*;
 import com.gxuwz.laters.bean.manager.*;
+import com.gxuwz.laters.tools.DateUtil;
 
 public class LaterServlet extends HttpServlet {
 private void proccess(HttpServletRequest request,HttpServletResponse response,String path)throws ServletException,IOException{
@@ -160,46 +162,54 @@ private void proccess(HttpServletRequest request,HttpServletResponse response,St
 
 		public void add(HttpServletRequest request, HttpServletResponse response) throws Exception {
 			try{
-			
-			String buildID = request.getParameter("buildID");
-			String buildName = request.getParameter("buildName");
-			
+			DateUtil dateutil = new DateUtil(); 
+			String laterID = request.getParameter("laterID");
+			String dormID = request.getParameter("dormID");
+			String stuID = request.getParameter("stuID");
+			String stuName = request.getParameter("stuName");
+			String laterTime = request.getParameter("laterTime");
+			String reason = request.getParameter("reason");
+			String classID = request.getParameter("classID");
 			//实例化user
-			Building build = new Building();
+			Later later = new Later();
 			//把参数对应放入实体类user属性中
-			build.setBuildID(buildID);
-			build.setBuildName(buildName);
+			later.setClassID(classID);
+			later.setDormID(dormID);
+			later.setLaterID(laterID);
+			later.setLaterTime(dateutil.StringtoD(laterTime));
+			later.setReason(reason);
+			later.setStuID(stuID);
+			later.setStuName(stuName);
+			LaterManager latermanager = new LaterManager();
 			
-			BuildManager buildmanager = new BuildManager();
-			
-			if(buildmanager.add(build)>0){
+			if(latermanager.add(later)>0){
 			//response.sendRedirect("/leaveMVC/WebRoot/page/user/user_updata.jsp");
 			list(request, response);
 			}else{
 			//response.sendRedirect("/leaveMVC/WebRoot/page/user/user_updata.jsp");	
-				proccess(request, response, "/page/build/build_add.jsp");
-			}
+				list(request, response);
+				}
 			}catch(Exception e){
 				e.printStackTrace();
-			}
+				}
 			}
 		public void list(HttpServletRequest request, HttpServletResponse response) throws Exception {
-			
-			List<Building> buildList = new ArrayList<Building>();			
-			BuildManager buildmanager = new BuildManager();
-			buildList = buildmanager.findAll();
-			request.setAttribute("buildList", buildList);
-			proccess(request, response, "/page/building/building_list.jsp");
+		
+			List<Later> laterList = new ArrayList<Later>();			
+			LaterManager latermanager = new LaterManager();
+			laterList = latermanager.findAll();
+			request.setAttribute("laterList", laterList);
+			proccess(request, response, "/page/later/later_list.jsp");
 			
 	}
 		
 		public void seach(HttpServletRequest request, HttpServletResponse response) throws Exception {
 			String keywords= request.getParameter("keywords");
-			List<Building> buildList = new ArrayList<Building>();			
-			BuildManager buildmanager = new BuildManager();
-			buildList = buildmanager.Seach(keywords);
-			request.setAttribute("buildList", buildList);
-			proccess(request, response, "/page/building/building_list.jsp");
+			List<Later> laterList = new ArrayList<Later>();			
+			LaterManager latermanager = new LaterManager();
+			laterList = latermanager.Seach(keywords);
+			request.setAttribute("laterList", laterList);
+			proccess(request, response, "/page/later/later_list.jsp");
 			
 			
 	}

@@ -19,7 +19,7 @@ private DbUtil dbUtil =new DbUtil();
 			Later later = new Later();
 			later.setDormID(rs.getString("dormID"));
 			later.setLaterID(rs.getString("laterID"));
-			later.setLaterTime(rs.getDate("latetTime"));
+			later.setLaterTime(rs.getDate("laterTime"));
 			later.setReason(rs.getString("reason"));
 			later.setStuID(rs.getString("stuID"));
 			later.setStuName(rs.getString("stuName"));
@@ -27,6 +27,26 @@ private DbUtil dbUtil =new DbUtil();
 		}
 		return laterList;
 	}
+	
+/*	public List<Later> findAll(String keywords) throws Exception{
+		List<Later> laterList = new ArrayList<Later>();
+		String sql = "select * from sys_later where 1=1";
+		if(keywords!=null){
+			sql = " select * from sys_later where dormID like '%"+keywords+"%'";
+		}
+		ResultSet rs = dbUtil.executeQuery(sql, null);
+		while(rs.next()){
+			Later later = new Later();
+			later.setDormID(rs.getString("dormID"));
+			later.setLaterID(rs.getString("laterID"));
+			later.setLaterTime(rs.getDate("laterTime"));
+			later.setReason(rs.getString("reason"));
+			later.setStuID(rs.getString("stuID"));
+			later.setStuName(rs.getString("stuName"));
+			laterList.add(later);
+		}
+		return laterList;
+	}*/
 	
 	public List<Later> Seach(String keywords) throws Exception{
 		List<Later> laterList = new ArrayList<Later>();

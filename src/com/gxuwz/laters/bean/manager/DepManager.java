@@ -23,6 +23,21 @@ private DbUtil dbUtil =new DbUtil();
 		}
 		return depList;
 	}
+/*	public List<Department> findAll(String keywords) throws Exception{
+		List<Department> depList = new ArrayList<Department>();
+		String sql = "select * from sys_department where 1=1";
+		if(keywords!=null){
+			sql = "select * from sys_department where depID like '%"+keywords+"%'  ";
+		}
+		ResultSet rs = dbUtil.executeQuery(sql, null);
+		while(rs.next()){
+			Department dep = new Department();
+			dep.setDepID(rs.getString("depID"));
+			dep.setDepName(rs.getString("depName"));
+			depList.add(dep);
+		}
+		return depList;
+	}*/
 	
 	public List<Department> Seach(String keywords) throws Exception{
 		List<Department> depList = new ArrayList<Department>();

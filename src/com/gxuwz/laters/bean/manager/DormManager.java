@@ -25,6 +25,7 @@ private DbUtil dbUtil =new DbUtil();
 		}
 		return dormList;
 	}
+	
 
 	public List<Dorm> Seach(String keywords,String buildID) throws Exception{
 		List<Dorm> dormList = new ArrayList<Dorm>();

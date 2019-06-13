@@ -21,14 +21,14 @@
 </head>
 
 <body>
-<form method="post" action="<%-- <%=path%>/BuildServlet?action=seach --%>" id="listform">
+<form method="post" action="" id="listform">
   <div class="panel admin-panel">
     <div class="panel-head"><strong class="icon-reorder"> 用户列表</strong> </div>
    <%--  <form method="post" action="<%=path%>/BuildServlet?action=seach" > --%>
     <div class="padding border-bottom">
       <ul class="search" style="padding-left:10px;">
 
-        <li> <a class="button border-main icon-plus-square-o" href="page/building/building_add.jsp"> 添加用户</a> </li>
+        <li> <a class="button border-main icon-plus-square-o" href="page/dorm/dorm_add.jsp"> 添加用户</a> </li>
             
         <li>搜索：</li>
           
@@ -43,8 +43,12 @@
     <table class="table table-hover text-center">
       <tr>
        <th>序号</th>
-				<th>楼号</th>
-				<th>楼名</th>
+				<th>迟到表号</th>
+				<th>宿舍号</th>
+				<th>学生号</th>
+				<th>学生名字</th>
+				<th>迟到时间</th>
+				<th>原因</th>
 				<th>操作</th>
       </tr>
     
@@ -52,22 +56,28 @@
 				
 			<%--读取所有用户信息记录 --%>
 			<%  //设置编码方式
-		       List<Building> buildList = new ArrayList<Building>();
-			   buildList = (List)request.getAttribute("buildList");
+		       List<Later> laterList = new ArrayList<Later>();
+			   laterList = (List)request.getAttribute("laterList");
 			   int index = 1;
-			   for(Building build : buildList){
-			   	  String buildID = build.getBuildID();
-			   	  String buildName = build.getBuildName();
-			   
+			   for(Later later : laterList){
+			   String laterID = later.getLaterID();
+			   String dormID = later.getDormID();
+			   String stuID = later.getStuID();
+			   String stuName = later.getStuName();
+			   Date laterTime = later.getLaterTime();
+			   String reason = later.getReason();
 			%>
 
 			<tr>
 				<td><%=index++%></td>
-				<td><%=buildID%></td>
-				<td><%=buildName%></td>
-
+				<td><%=laterID%></td>
+				<td><%=dormID%></td>
+				<td><%=stuID%></td>
+				<td><%=stuName%></td>
+				<td><%=laterTime%></td>
+				<td><%=reason%></td>
 				<td>
-				<div class="button-group"> <a class="button border-main" href="<%=path%>/BuildServlet?buildID=<%=buildID%>&action=get"><span class="icon-edit"></span> 修改</a> <a class="button border-red" href="<%=path%>/BuildServlet?buildID=<%=buildID%>&action=del" ><span class="icon-trash-o"></span> 删除</a> </div>
+				<div class="button-group"> <a class="button border-main" href="<%=path%>/DormServlet?dormID=<%=dormID%>&action=get&stuID=<%=stuID %>"><span class="icon-edit"></span> 修改</a> <a class="button border-red" href="<%=path%>/DormServlet?dormID=<%=dormID%>&action=del&stuID=<%=stuID %>" ><span class="icon-trash-o"></span> 删除</a> </div>
 				</td>
 			</tr>
 			<%

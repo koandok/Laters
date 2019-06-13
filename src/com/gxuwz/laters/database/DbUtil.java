@@ -9,7 +9,7 @@ public class DbUtil {
 	private String jdbc_driver;
 	public DbUtil(){
 		this.jdbc_driver="com.mysql.jdbc.Driver";
-		this.jdbc_url="jdbc:mysql://127.0.0.1:3306/latersdb";
+		this.jdbc_url="jdbc:mysql://127.0.0.1:3306/laters";
 		this.jdbc_id="root";
 		this.jdbc_pwd="123456";
 	}

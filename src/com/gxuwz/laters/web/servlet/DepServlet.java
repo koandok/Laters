@@ -172,7 +172,7 @@ public void add(HttpServletRequest request, HttpServletResponse response) throws
 	}
 	}
 public void list(HttpServletRequest request, HttpServletResponse response) throws Exception {
-	
+
 	List<Department> depList = new ArrayList<Department>();			
 	DepManager depmanager = new DepManager();
 	depList = depmanager.findAll();
