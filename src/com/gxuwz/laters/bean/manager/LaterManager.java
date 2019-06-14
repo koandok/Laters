@@ -59,7 +59,7 @@ private DbUtil dbUtil =new DbUtil();
 			Later later = new Later();
 			later.setDormID(rs.getString("dormID"));
 			later.setLaterID(rs.getString("laterID"));
-			later.setLaterTime(rs.getDate("latetTime"));
+			later.setLaterTime(rs.getDate("laterTime"));
 			later.setReason(rs.getString("reason"));
 			later.setStuID(rs.getString("stuID"));
 			later.setStuName(rs.getString("stuName"));
@@ -77,7 +77,7 @@ private DbUtil dbUtil =new DbUtil();
 		    while(rs.next()){
 		    	later.setDormID(rs.getString("dormID"));
 				later.setLaterID(rs.getString("laterID"));
-				later.setLaterTime(rs.getDate("latetTime"));
+				later.setLaterTime(rs.getDate("laterTime"));
 				later.setReason(rs.getString("reason"));
 				later.setStuID(rs.getString("stuID"));
 				later.setStuName(rs.getString("stuName"));
@@ -119,7 +119,7 @@ private DbUtil dbUtil =new DbUtil();
 	
 	public int add(Later later)throws Exception{
 		try {
-			String sql = "insert into sys_later(laterID,dormID,stuID,stuName,lateTime,reason,classID)values(?,?,?,?,?,?,?)";
+			String sql = "insert into sys_later(laterID,dormID,stuID,stuName,laterTime,reason,classID)values(?,?,?,?,?,?,?)";
 			Object params[] = new Object [7];
 			params[0] = later.getLaterID();
 			params[1] = later.getDormID();
@@ -136,12 +136,11 @@ private DbUtil dbUtil =new DbUtil();
 		       }
 	}
 	
-	public List<Student> findStubyID(String ID) throws Exception{
-		List<Student> stuList = new ArrayList<Student>();
+	public Student findStubyID(String ID) throws Exception{
+		Student stu = new Student();
 		String sql = "select * from sys_student where stuID = '"+ID+"'";
 		ResultSet rs = dbUtil.executeQuery(sql, null);
-		while(rs.next()){
-			Student stu = new Student();
+		while(rs.next()){	
 			stu.setBedID(rs.getString("bedID"));
 			stu.setClassID(rs.getString("classID"));
 			stu.setDormID(rs.getString("dormID"));
@@ -149,9 +148,9 @@ private DbUtil dbUtil =new DbUtil();
 			stu.setPassword(rs.getString("password"));
 			stu.setStuID(rs.getString("stuID"));
 			stu.setStuName(rs.getString("stuName"));
-			stuList.add(stu);
+			
 		}
-		return stuList;
+		return stu;
 	}
 	
 	

@@ -77,9 +77,9 @@ private void proccess(HttpServletRequest request,HttpServletResponse response,St
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}else if("adds".equals(action)){
+		}else if("getstu".equals(action)){
 			try {
-				gets(request, response);
+				getstu(request, response);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -89,23 +89,18 @@ private void proccess(HttpServletRequest request,HttpServletResponse response,St
 	}
 	public void edit(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		try{
-	
-			String buildID = request.getParameter("buildID");
-			String buildName = request.getParameter("buildName");
-			
-			//实例化user
-			Building build = new Building();
-		//把参数对应放入实体类user属性中
-	build.setBuildID(buildID);
-	build.setBuildName(buildName);
-		
-	BuildManager buildmanager = new BuildManager();
-		
-		if(buildmanager.edit(build)>0){
+			DateUtil dateutil = new DateUtil(); 
+			String laterID = request.getParameter("laterID");
+			String reason = request.getParameter("reason");
+			Later later = new Later();	
+			later.setLaterID(laterID);
+			later.setReason(reason);
+			LaterManager latermanager = new LaterManager();
+
+		if(latermanager.edit(later)>0){
 		//response.sendRedirect("/leaveMVC/WebRoot/page/user/user_updata.jsp");
 		list(request, response);
 		}else{
-		//response.sendRedirect("/leaveMVC/WebRoot/page/user/user_updata.jsp");	
 			proccess(request, response, "/page/user/user_updata.jsp");
 		}
 		}catch(Exception e){
@@ -114,50 +109,44 @@ private void proccess(HttpServletRequest request,HttpServletResponse response,St
 		}
 	public void del(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		try{
-	
-			String buildID = request.getParameter("buildID");
-			
+			String laterID = request.getParameter("laterID");
 			//实例化user
-			Building build = new Building();
+			Later later = new Later();
 		//把参数对应放入实体类user属性中
-	build.setBuildID(buildID);
-	
+			later.setLaterID(laterID);
+			LaterManager latermanager = new LaterManager();
 		
-	BuildManager buildmanager = new BuildManager();
-		
-		if(buildmanager.del(build)>0){
-		//response.sendRedirect("/leaveMVC/WebRoot/page/user/user_updata.jsp");
+		if(latermanager.del(later)>0){
 		list(request, response);
 		}else{
-		//response.sendRedirect("/leaveMVC/WebRoot/page/user/user_updata.jsp");	
-			proccess(request, response, "/page/user/user_update.jsp");
+			list(request, response);
 		}
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 		}
 		
-		public void get(HttpServletRequest request, HttpServletResponse response) throws Exception {
-			String buildID = request.getParameter("buildID");;
-			//实例化user
-			
-			Building build = new Building();		
-			BuildManager buildmanager = new BuildManager();
-			build = buildmanager.findAllbyID(buildID);
-			request.setAttribute("build", build);
-			proccess(request, response, "/page/building/building_update.jsp");
-			
-	}
-		public void gets(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public void get(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String LaterID = request.getParameter("laterID");
+		Later later = new Later();
+		LaterManager latermanager = new LaterManager();
+		later = latermanager.findAllbyID(LaterID);
+		request.setAttribute("later", later);
+		proccess(request, response, "/page/later/later_update.jsp");
+		
+}
+		public void getstu(HttpServletRequest request, HttpServletResponse response) throws Exception {
 			String stuID = request.getParameter("stuID");;
-			//实例化user
-			
 			Student  stu   = new Student();		
 			LaterManager latermanager = new LaterManager();
-			stu = buildmanager.findAllbyID(buildID);
-			request.setAttribute("build", build);
-			proccess(request, response, "/page/building/building_update.jsp");
-			
+			stu = latermanager.findStubyID(stuID);
+			if(stu.getStuID()!=null){
+			request.setAttribute("stu", stu);
+			proccess(request, response, "/page/later/later_add.jsp");
+			}else{
+				request.setAttribute("flag", "error");	
+				list(request, response);
+			}
 	}
 
 		public void add(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -183,10 +172,9 @@ private void proccess(HttpServletRequest request,HttpServletResponse response,St
 			LaterManager latermanager = new LaterManager();
 			
 			if(latermanager.add(later)>0){
-			//response.sendRedirect("/leaveMVC/WebRoot/page/user/user_updata.jsp");
+		
 			list(request, response);
 			}else{
-			//response.sendRedirect("/leaveMVC/WebRoot/page/user/user_updata.jsp");	
 				list(request, response);
 				}
 			}catch(Exception e){
