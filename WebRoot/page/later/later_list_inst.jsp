@@ -28,7 +28,6 @@
     <div class="padding border-bottom">
       <ul class="search" style="padding-left:10px;">
 
-        <li> <a class="button border-main icon-plus-square-o" href="<%=path %>/page/later/later_stu_add.jsp"> 添加用户</a> </li>
             
         <li>搜索：</li>
           
@@ -40,15 +39,8 @@
       </ul>
     </div>
     <!-- </form>  -->
-     <%
-				Object obj = request.getAttribute("flag");
-				
-				if (obj!= null){	
-				 %>
-				 <div style="txxt-align:center">
-				 <span>error:无此学生</span>
-				 </div>
-				 <%}%> 
+     
+     
     <table class="table table-hover text-center">
       <tr>
        <th>序号</th>
@@ -87,9 +79,7 @@
 				<td><%=laterTime%></td>
 				<td><%=classID%></td>
 				<td><%=reason%></td>
-				<td>
-				<div class="button-group"> <a class="button border-main" href="<%=path%>/LaterServlet?laterID=<%=laterID%>&action=get"><span class="icon-edit"></span> 修改</a> <a class="button border-red" href="<%=path%>/LaterServlet?laterID=<%=laterID%>&action=del" ><span class="icon-trash-o"></span> 删除</a> </div>
-				</td>
+				
 			</tr>
 			<%
 				}

@@ -26,11 +26,10 @@
   <div class="leftnav-title"><strong><span class="icon-list"></span>菜单列表</strong></div>
   
   
-<li> <h2><a href="<%=path %>/LaterServlet?action=list" target="right"><span class="icon-user"></span>班级管理</a></h2></li>
+<li> <h2><a href="<%=path %>/LaterServlet?action=list_inst" target="right"><span class="icon-user"></span>晚归表管理</a></h2></li>
    
-<li><h2><a href="<%=path %>/DepServlet?action=list" target="right"><span class="icon-user"></span>课程管理</a></h2></li>
- 
-<li> <h2><a href="page\student\stu_list.jsp" target="right"><span class="icon-user"></span>学生信息管理</a></h2></li>
+<li><h2><a href="" target="right"><span class="icon-user"></span>课程管理</a></h2></li>
+
     
   <h2><span class="icon-user"></span>请假信息管理</h2>
   <ul>

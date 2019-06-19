@@ -23,6 +23,7 @@ private DbUtil dbUtil =new DbUtil();
 			later.setReason(rs.getString("reason"));
 			later.setStuID(rs.getString("stuID"));
 			later.setStuName(rs.getString("stuName"));
+			later.setClassID(rs.getString("classID"));
 			laterList.add(later);
 		}
 		return laterList;
@@ -62,6 +63,7 @@ private DbUtil dbUtil =new DbUtil();
 			later.setLaterTime(rs.getDate("laterTime"));
 			later.setReason(rs.getString("reason"));
 			later.setStuID(rs.getString("stuID"));
+			later.setClassID(rs.getString("classID"));
 			later.setStuName(rs.getString("stuName"));
 			laterList.add(later);
 		}

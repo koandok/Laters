@@ -26,11 +26,11 @@
 <div class="leftnav">
   <div class="leftnav-title"><strong><span class="icon-list"></span>菜单列表</strong></div>
   
-  <li><h2><a href="page/user/user_updata.jsp" target="right"><span class="icon-user"></span>个人设置</a></h2></li>
+  <li><h2><a href="<%=path %>/DormServlet?action=list" target="right"><span class="icon-user"></span>宿舍管理</a></h2></li>
   
-  <li><h2><a href="page/department/dep_list.jsp" target="right"><span class="icon-user"></span>二级学院管理</a></h2></li>
+  <li><h2><a href="<%=path %>/LaterServlet?action=list" target="right"><span class="icon-user"></span>晚归管理</a></h2></li>
  
-  <li><h2><a href="page/instructor/inst_list.jsp" target="right"><span class="icon-user"></span>辅导员管理</a></h2></li>
+  <li><h2><a href="<%=path %>/DepServlet?action=list" target="right"><span class="icon-user"></span>辅导员管理</a></h2></li>
  
 </div>
 <script type="text/javascript">

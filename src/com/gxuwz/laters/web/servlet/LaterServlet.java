@@ -49,6 +49,13 @@ private void proccess(HttpServletRequest request,HttpServletResponse response,St
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}else if("list_inst".equals(action)){
+			try {
+				list_inst(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}else if("seach".equals(action)){
 			try {
 				seach(request, response);
@@ -190,7 +197,15 @@ private void proccess(HttpServletRequest request,HttpServletResponse response,St
 			proccess(request, response, "/page/later/later_list.jsp");
 			
 	}
-		
+		public void list_inst(HttpServletRequest request, HttpServletResponse response) throws Exception {
+			
+			List<Later> laterList = new ArrayList<Later>();			
+			LaterManager latermanager = new LaterManager();
+			laterList = latermanager.findAll();
+			request.setAttribute("laterList", laterList);
+			proccess(request, response, "/page/later/later_list_inst.jsp");
+			
+	}	
 		public void seach(HttpServletRequest request, HttpServletResponse response) throws Exception {
 			String keywords= request.getParameter("keywords");
 			List<Later> laterList = new ArrayList<Later>();			
