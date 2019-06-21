@@ -192,7 +192,7 @@ private void proccess(HttpServletRequest request,HttpServletResponse response,St
 		
 			List<Later> laterList = new ArrayList<Later>();			
 			LaterManager latermanager = new LaterManager();
-			laterList = latermanager.findAll();
+			laterList = latermanager.findAll(null);
 			request.setAttribute("laterList", laterList);
 			proccess(request, response, "/page/later/later_list.jsp");
 			
@@ -201,18 +201,19 @@ private void proccess(HttpServletRequest request,HttpServletResponse response,St
 			
 			List<Later> laterList = new ArrayList<Later>();			
 			LaterManager latermanager = new LaterManager();
-			laterList = latermanager.findAll();
+			laterList = latermanager.findAll(null);
 			request.setAttribute("laterList", laterList);
 			proccess(request, response, "/page/later/later_list_inst.jsp");
 			
 	}	
 		public void seach(HttpServletRequest request, HttpServletResponse response) throws Exception {
 			String keywords= request.getParameter("keywords");
+			System.out.println(keywords);
 			List<Later> laterList = new ArrayList<Later>();			
 			LaterManager latermanager = new LaterManager();
-			laterList = latermanager.Seach(keywords);
+			laterList = latermanager.findAll(keywords);
 			request.setAttribute("laterList", laterList);
-			proccess(request, response, "/page/later/later_list.jsp");
+			proccess(request, response, "/page/later/later_list_inst.jsp");
 			
 			
 	}

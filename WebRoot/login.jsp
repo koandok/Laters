@@ -28,7 +28,7 @@
             </div>         
             <form  action="<%=path %>/LoginServlet?action=login" method="post" target="_parent" >
             <div class="panel loginbox">
-                <div class="text-center margin-big padding-big-top"><h1>请假管理系统</h1></div>
+                <div class="text-center margin-big padding-big-top"><h1>晚归管理系统</h1></div>
                 <div class="panel-body" style="padding:30px; padding-bottom:10px; padding-top:10px;">
                     <div class="form-group">
                      <%

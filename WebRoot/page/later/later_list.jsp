@@ -30,10 +30,10 @@
 
         <li> <a class="button border-main icon-plus-square-o" href="<%=path %>/page/later/later_stu_add.jsp"> 添加用户</a> </li>
             
-        <li>搜索：</li>
+      <!--   <li>搜索：</li>
           
           <li> <input type="text" placeholder="请输入搜索关键字" name="keywords" class="input" style="width:250px; line-height:17px;display:inline-block" />       
-         <input type="submit" value="搜索"name="搜索" class="button border-main icon-search"  ></li>
+         <input type="submit" value="搜索"name="搜索" class="button border-main icon-search"  ></li> -->
 <%--        <li>
           <input type="text" placeholder="请输入搜索关键字" name="keywords" class="input" style="width:250px; line-height:17px;display:inline-block" />
           <a href="<%=path%>/BuildServlet?action=seach" class="button border-main icon-search" onclick="changesearch()" > 搜索</a></li> --%>
@@ -57,6 +57,7 @@
 				<th>学生号</th>
 				<th>学生名字</th>
 				<th>迟到时间</th>
+				<th>班级ID</th>
 				<th>原因</th>
 				<th>操作</th>
       </tr>

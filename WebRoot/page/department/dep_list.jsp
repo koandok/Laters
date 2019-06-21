@@ -43,8 +43,8 @@
     <table class="table table-hover text-center">
       <tr>
        <th>序号</th>
-				<th>楼号</th>
-				<th>楼名</th>
+				<th>二级学院ID</th>
+				<th>二级学院名字</th>
 				<th>操作</th>
       </tr>
     
@@ -54,6 +54,7 @@
 			<%  //设置编码方式
 		       List<Department> depList = new ArrayList<Department>();
 			   depList = (List)request.getAttribute("depList");
+			    System.out.print("66666666"+depList.size());
 			   int index = 1;
 			   for(Department dep : depList){
 			   	  String depID = dep.getDepID();

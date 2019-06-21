@@ -11,9 +11,12 @@ import com.gxuwz.laters.database.DbUtil;
 public class LaterManager {
 private DbUtil dbUtil =new DbUtil();
 	
-	public List<Later> findAll() throws Exception{
+	public List<Later> findAll(String keywords) throws Exception{
 		List<Later> laterList = new ArrayList<Later>();
 		String sql = "select * from sys_later where 1=1";
+		if(keywords!=null&&!keywords.equals("")){
+			sql = "select * from sys_later where classID like '%"+keywords+"%' ";
+		}
 		ResultSet rs = dbUtil.executeQuery(sql, null);
 		while(rs.next()){
 			Later later = new Later();
@@ -49,7 +52,7 @@ private DbUtil dbUtil =new DbUtil();
 		return laterList;
 	}*/
 	
-	public List<Later> Seach(String keywords) throws Exception{
+/*	public List<Later> Seach(String keywords) throws Exception{
 		List<Later> laterList = new ArrayList<Later>();
 		String sql = "select * from sys_later where 1=1";
 			  if(keywords!=null){
@@ -68,7 +71,7 @@ private DbUtil dbUtil =new DbUtil();
 			laterList.add(later);
 		}
 		return laterList;
-	}
+	}*/
 	
 	public Later findAllbyID(String ID)throws Exception{
 		try {

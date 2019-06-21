@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="renderer" content="webkit">
-    <title>请假管理系统</title>  
+    <title>晚归管理系统</title>  
     <link rel="stylesheet" href="css/pintuer.css">
     <link rel="stylesheet" href="css/admin.css">
     <link rel="shortcut icon" href="images/logo.jpg">
@@ -17,7 +17,7 @@
 <body style="background-color:#f2f9fd;">
 <div class="header bg-main">
   <div class="logo margin-big-left fadein-top">
-    <h1><img src="images/logo.jpg" class="radius-circle rotate-hover" height="50" alt="" />请假管理系统</h1>
+    <h1><img src="images/logo.jpg" class="radius-circle rotate-hover" height="50" alt="" />晚归管理系统</h1>
   </div>
   <%String admin = (String)session.getAttribute("name"); 
  %>
@@ -27,10 +27,9 @@
   <div class="leftnav-title"><strong><span class="icon-list"></span>菜单列表</strong></div>
   
   <li><h2><a href="<%=path %>/DormServlet?action=list" target="right"><span class="icon-user"></span>宿舍管理</a></h2></li>
-  
   <li><h2><a href="<%=path %>/LaterServlet?action=list" target="right"><span class="icon-user"></span>晚归管理</a></h2></li>
- 
-  <li><h2><a href="<%=path %>/DepServlet?action=list" target="right"><span class="icon-user"></span>辅导员管理</a></h2></li>
+  <li><h2><a href="<%=path %>/DepServlet?action=list" target="right"><span class="icon-user"></span>二级学院管理</a></h2></li>
+  <li><h2><a href="<%=path %>/BuildServlet?action=list" target="right"><span class="icon-user"></span>宿舍楼管理</a></h2></li>
  
 </div>
 <script type="text/javascript">

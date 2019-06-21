@@ -21,14 +21,13 @@
 </head>
 
 <body>
-<form method="post" action="" id="listform">
+<form method="post" action="<%=path%>/LaterServlet?action=seach" id="listform">
   <div class="panel admin-panel">
     <div class="panel-head"><strong class="icon-reorder"> 用户列表</strong> </div>
    <%--  <form method="post" action="<%=path%>/BuildServlet?action=seach" > --%>
     <div class="padding border-bottom">
       <ul class="search" style="padding-left:10px;">
 
-            
         <li>搜索：</li>
           
           <li> <input type="text" placeholder="请输入搜索关键字" name="keywords" class="input" style="width:250px; line-height:17px;display:inline-block" />       
@@ -36,7 +35,10 @@
 <%--        <li>
           <input type="text" placeholder="请输入搜索关键字" name="keywords" class="input" style="width:250px; line-height:17px;display:inline-block" />
           <a href="<%=path%>/BuildServlet?action=seach" class="button border-main icon-search" onclick="changesearch()" > 搜索</a></li> --%>
+                <%String keywords = request.getParameter("keywords"); %>
+      <div class="button-group"> <a class="button border-main" href="<%=path%>/ExcServlet?keywords=<%=keywords%>&action=exc"><span class="icon-edit"></span> 导出</a></div>
       </ul>
+
     </div>
     <!-- </form>  -->
      
@@ -49,14 +51,15 @@
 				<th>学生号</th>
 				<th>学生名字</th>
 				<th>迟到时间</th>
+				<th>班级ID</th>
 				<th>原因</th>
-				<th>操作</th>
       </tr>
     
 				
 				
 			<%--读取所有用户信息记录 --%>
 			<%  //设置编码方式
+			
 		       List<Later> laterList = new ArrayList<Later>();
 			   laterList = (List)request.getAttribute("laterList");
 			   int index = 1;
@@ -85,7 +88,9 @@
 				}
 			%>
     </table>
+    
   </div>
+  
   <div class="pagelist"> <a href="">上一页</a> <span class="current">1</span><a href="">2</a><a href="">3</a><a href="">下一页</a><a href="">尾页</a> </div>
 </form>
 </body>
