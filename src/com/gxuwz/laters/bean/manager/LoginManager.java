@@ -22,9 +22,7 @@ public class LoginManager {
 		ResultSet rs = dbUtil.executeQuery(sql, null);
 		if(rs.next()){
 			a = true;
-			System.out.println("--"+a);
 		}
-		System.out.println("++"+a);
 		return a;
 	}
 

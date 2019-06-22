@@ -22,7 +22,7 @@
 
 <body>
 <div class="panel admin-panel">
-  <div class="panel-head" id="add"><strong><span class="icon-pencil-square-o"></span>增加用户</strong></div>
+  <div class="panel-head" id="add"><strong><span class="icon-pencil-square-o"></span>增加</strong></div>
   <div class="body-content">
     <form method="post" class="form-x" action="<%=path %>/DormServlet?action=add">  
       <div class="form-group">

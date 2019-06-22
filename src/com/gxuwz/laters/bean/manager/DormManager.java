@@ -11,9 +11,12 @@ import com.gxuwz.laters.database.DbUtil;
 public class DormManager {
 private DbUtil dbUtil =new DbUtil();
 	
-	public List<Dorm> findAll(String buildID) throws Exception{
+	public List<Dorm> findAll(String buildID,String keywords) throws Exception{
 		List<Dorm> dormList = new ArrayList<Dorm>();
 		String sql = "select * from sys_dorm where buildID='"+buildID+"'";
+		  if(keywords!=null){
+		   sql="select * from sys_dorm where dormID like '%"+keywords+"%' and buildID='"+buildID+"' ";
+	      }
 		ResultSet rs = dbUtil.executeQuery(sql, null);
 		while(rs.next()){
 			Dorm dorm = new Dorm();
@@ -27,7 +30,7 @@ private DbUtil dbUtil =new DbUtil();
 	}
 	
 
-	public List<Dorm> Seach(String keywords,String buildID) throws Exception{
+	/*public List<Dorm> Seach(String keywords,String buildID) throws Exception{
 		List<Dorm> dormList = new ArrayList<Dorm>();
 		String sql = "select * from sys_dorm where buildID='"+buildID+"'";
 			  if(keywords!=null){
@@ -43,7 +46,7 @@ private DbUtil dbUtil =new DbUtil();
 			dormList.add(dorm);
 		}
 		return dormList;
-	}
+	}*/
 	
 	public Dorm findAllbyID(String ID,String stuID)throws Exception{
 		try {

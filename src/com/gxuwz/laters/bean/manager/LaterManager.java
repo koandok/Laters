@@ -32,11 +32,11 @@ private DbUtil dbUtil =new DbUtil();
 		return laterList;
 	}
 	
-/*	public List<Later> findAll(String keywords) throws Exception{
+	public List<Later> findAllbystu(String keywords,String id) throws Exception{
 		List<Later> laterList = new ArrayList<Later>();
-		String sql = "select * from sys_later where 1=1";
-		if(keywords!=null){
-			sql = " select * from sys_later where dormID like '%"+keywords+"%'";
+		String sql = "select * from sys_later where stuID = '"+id+"'";
+		if(keywords!=null&&!keywords.equals("")){
+			sql = "select * from sys_later where classID like '%"+keywords+"%' and stuID = '"+id+"' ";
 		}
 		ResultSet rs = dbUtil.executeQuery(sql, null);
 		while(rs.next()){
@@ -47,31 +47,13 @@ private DbUtil dbUtil =new DbUtil();
 			later.setReason(rs.getString("reason"));
 			later.setStuID(rs.getString("stuID"));
 			later.setStuName(rs.getString("stuName"));
-			laterList.add(later);
-		}
-		return laterList;
-	}*/
-	
-/*	public List<Later> Seach(String keywords) throws Exception{
-		List<Later> laterList = new ArrayList<Later>();
-		String sql = "select * from sys_later where 1=1";
-			  if(keywords!=null){
-			   sql="select * from sys_later where classID like '%"+keywords+"%'  ";
-		      }
-		ResultSet rs = dbUtil.executeQuery(sql, null);
-		while(rs.next()){
-			Later later = new Later();
-			later.setDormID(rs.getString("dormID"));
-			later.setLaterID(rs.getString("laterID"));
-			later.setLaterTime(rs.getDate("laterTime"));
-			later.setReason(rs.getString("reason"));
-			later.setStuID(rs.getString("stuID"));
 			later.setClassID(rs.getString("classID"));
-			later.setStuName(rs.getString("stuName"));
 			laterList.add(later);
 		}
 		return laterList;
-	}*/
+	}
+	
+
 	
 	public Later findAllbyID(String ID)throws Exception{
 		try {

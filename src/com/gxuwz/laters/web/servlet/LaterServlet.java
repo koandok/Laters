@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.gxuwz.laters.bean.entity.*;
 import com.gxuwz.laters.bean.manager.*;
@@ -56,14 +57,8 @@ private void proccess(HttpServletRequest request,HttpServletResponse response,St
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}else if("seach".equals(action)){
-			try {
-				seach(request, response);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}else if("edit".equals(action)){
+		}
+		else if("edit".equals(action)){
 			try {
 				edit(request,response);
 			} catch (Exception e) {
@@ -87,6 +82,13 @@ private void proccess(HttpServletRequest request,HttpServletResponse response,St
 		}else if("getstu".equals(action)){
 			try {
 				getstu(request, response);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else if("list_stu".equals(action)){
+			try {
+				list_stu(request, response);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -189,32 +191,34 @@ private void proccess(HttpServletRequest request,HttpServletResponse response,St
 				}
 			}
 		public void list(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
+			String keywords= request.getParameter("keywords");
 			List<Later> laterList = new ArrayList<Later>();			
 			LaterManager latermanager = new LaterManager();
-			laterList = latermanager.findAll(null);
+			laterList = latermanager.findAll(keywords);
 			request.setAttribute("laterList", laterList);
 			proccess(request, response, "/page/later/later_list.jsp");
 			
 	}
 		public void list_inst(HttpServletRequest request, HttpServletResponse response) throws Exception {
-			
-			List<Later> laterList = new ArrayList<Later>();			
-			LaterManager latermanager = new LaterManager();
-			laterList = latermanager.findAll(null);
-			request.setAttribute("laterList", laterList);
-			proccess(request, response, "/page/later/later_list_inst.jsp");
-			
-	}	
-		public void seach(HttpServletRequest request, HttpServletResponse response) throws Exception {
 			String keywords= request.getParameter("keywords");
-			System.out.println(keywords);
 			List<Later> laterList = new ArrayList<Later>();			
 			LaterManager latermanager = new LaterManager();
 			laterList = latermanager.findAll(keywords);
 			request.setAttribute("laterList", laterList);
 			proccess(request, response, "/page/later/later_list_inst.jsp");
 			
+	}	
+		
+		public void list_stu(HttpServletRequest request, HttpServletResponse response) throws Exception {
+			String keywords= request.getParameter("keywords");
+			List<Later> laterList = new ArrayList<Later>();			
+			LaterManager latermanager = new LaterManager();
+			HttpSession session = request.getSession();
+			String stuID = (String)session.getAttribute("userid");
+			laterList = latermanager.findAllbystu(keywords, stuID);
+			request.setAttribute("laterList", laterList);
+			proccess(request, response, "/page/later/later_list_stu.jsp");
 			
-	}
+	}	
+		
 }

@@ -12,7 +12,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <meta name="renderer" content="webkit">
-<title>用户信息列表</title>
+<title>信息列表</title>
 <link rel="stylesheet" href="css/pintuer.css">
 <link rel="stylesheet" href="css/admin.css">
 <link rel="shortcut icon" href="images/logo.jpg">
@@ -23,7 +23,7 @@
 
 <body>
 <div class="panel admin-panel">
-  <div class="panel-head" id="add"><strong><span class="icon-pencil-square-o"></span>增加用户</strong></div>
+  <div class="panel-head" id="add"><strong><span class="icon-pencil-square-o"></span>增加</strong></div>
   <div class="body-content">
     <form method="post" class="form-x" action="<%=path%>/LaterServlet?action=add">  
     <%
@@ -117,7 +117,7 @@
           <label></label>
         </div>
         <div class="field" >
-          <button class="button bg-main icon-check-square-o" type="submit"> 修改</button>
+          <button class="button bg-main icon-check-square-o" type="submit"> 提交</button>
         </div>
       </div>
     </form>

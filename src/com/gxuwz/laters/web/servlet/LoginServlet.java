@@ -28,7 +28,6 @@ private void proccess(HttpServletRequest request,HttpServletResponse response,St
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action=request.getParameter("action");
-		System.out.println("11111111111"+action);
 		//Ñ¡Ôñ½á¹¹
 		if("login".equals(action)){
 			try {
@@ -53,9 +52,6 @@ private void proccess(HttpServletRequest request,HttpServletResponse response,St
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
 		String user = request.getParameter("user");
-		System.out.println(name);
-		System.out.println(password);
-		System.out.println(password);
 		HttpSession session=request.getSession();
 		session.setAttribute("userid", name);
 		LoginManager loginmanager = new  LoginManager();

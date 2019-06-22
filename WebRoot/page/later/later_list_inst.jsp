@@ -11,7 +11,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <meta name="renderer" content="webkit">
-<title>用户信息列表</title>
+<title>信息列表</title>
 <link rel="stylesheet" href="css/pintuer.css">
 <link rel="stylesheet" href="css/admin.css">
 <link rel="shortcut icon" href="images/logo.jpg">
@@ -21,9 +21,9 @@
 </head>
 
 <body>
-<form method="post" action="<%=path%>/LaterServlet?action=seach" id="listform">
+<form method="post" action="<%=path%>/LaterServlet?action=list_inst" id="listform">
   <div class="panel admin-panel">
-    <div class="panel-head"><strong class="icon-reorder"> 用户列表</strong> </div>
+    <div class="panel-head"><strong class="icon-reorder"> 列表</strong> </div>
    <%--  <form method="post" action="<%=path%>/BuildServlet?action=seach" > --%>
     <div class="padding border-bottom">
       <ul class="search" style="padding-left:10px;">
@@ -36,7 +36,7 @@
           <input type="text" placeholder="请输入搜索关键字" name="keywords" class="input" style="width:250px; line-height:17px;display:inline-block" />
           <a href="<%=path%>/BuildServlet?action=seach" class="button border-main icon-search" onclick="changesearch()" > 搜索</a></li> --%>
                 <%String keywords = request.getParameter("keywords"); %>
-      <div class="button-group"> <a class="button border-main" href="<%=path%>/ExcServlet?keywords=<%=keywords%>&action=exc"><span class="icon-edit"></span> 导出</a></div>
+      <div class="button-group"> <a class="button border-main" href="<%=path%>/ExcServlet?keywords=<%=keywords%>"><span class="icon-edit"></span> 导出</a></div>
       </ul>
 
     </div>

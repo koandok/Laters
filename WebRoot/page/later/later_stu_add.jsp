@@ -10,7 +10,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <meta name="renderer" content="webkit">
-<title>用户信息列表</title>
+<title>信息列表</title>
 <link rel="stylesheet" href="css/pintuer.css">
 <link rel="stylesheet" href="css/admin.css">
 <link rel="shortcut icon" href="images/logo.jpg">

@@ -39,6 +39,11 @@
     <servlet-name>LaterServlet</servlet-name>
     <servlet-class>com.gxuwz.laters.web.servlet.LaterServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>ExcServlet</servlet-name>
+    <servlet-class>com.gxuwz.laters.bean.manager.ExcServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -62,5 +67,9 @@
   <servlet-mapping>
     <servlet-name>LaterServlet</servlet-name>
     <url-pattern>/LaterServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ExcServlet</servlet-name>
+    <url-pattern>/ExcServlet</url-pattern>
   </servlet-mapping>
 </web-app>
